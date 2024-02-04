@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head> 
+    <title>Create</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link href="/webjars/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div th:replace="header-footer/header :: header"></div>
+    <p></p>
+    <div class="container w-50">
+    <form action="#" th:action="@{/user-create}" th:object="${user}" method="post">
+        <div class="mb-3">
+          <label for="name" class="form-label">Name</label>
+          <input type="text" th:field="*{name}" class="form-control" id="name">
+          <p style="font-size: 14px; color:red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
+        </div>
+        <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input type="text" th:field="*{email}" class="form-control" id="email">
+          <p style="font-size: 14px; color:red" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
+        </div>
+        <button type="submit" class="btn btn-primary">Create</button>
+    </form>
+</div>
+
+</body>
+</html>
