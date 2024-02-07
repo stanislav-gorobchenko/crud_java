@@ -25,7 +25,7 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping("/users")
+    @GetMapping("/")
     public String findAll(Model model){
         List<User> user = userService.findAll();
         model.addAttribute("users", user);
@@ -44,13 +44,13 @@ public class UserController {
             return "/user-create";
         }
         userService.saveUser(user);
-        return "redirect:/users";
+        return "redirect:/";
     }
 
     @GetMapping("user-delete/{id}")
     public String daleteUser(@PathVariable("id") Integer id){
         userService.deleteById(id);
-        return "redirect:/users";
+        return "redirect:/";
     }
 
     @GetMapping("user-update/{id}")
@@ -66,6 +66,6 @@ public class UserController {
             return "/user-update";
         }
         userService.saveUser(user);
-        return "redirect:/users";
+        return "redirect:/";
     }
 }
